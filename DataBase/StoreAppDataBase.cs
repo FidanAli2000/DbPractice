@@ -1,0 +1,17 @@
+﻿using DbPractice.Model;
+using Microsoft.EntityFrameworkCore;
+
+namespace DbPractice.DataBase;
+
+public class StoreAppDataBase : DbContext
+{
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Data Source=AUCE;Initial Catalog=StoreAppDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True");
+        base.OnConfiguring(optionsBuilder);
+    }
+
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet <Order> Orders { get; set; }
+    public DbSet <Product> Products { get; set; }
+}
